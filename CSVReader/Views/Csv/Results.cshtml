@@ -1,0 +1,44 @@
+@model CSVReader.ViewModels.CsvResultsViewModel
+
+@if (Model.GroupedLastNames == null || !Model.GroupedLastNames.Any())
+{
+    <p class="text-muted">No data available for Output 1.</p>
+}
+else
+{
+    <h3>Output 1: Grouped Lastnames</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Last Name</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.GroupedLastNames)
+        {
+            <tr>
+                <td>@item.LastName</td>
+                <td>@item.Count</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<div>
+    <h3>Output 2: Unique Addresses</h3>
+    @if (Model.UniqueAddresses == null || !Model.UniqueAddresses.Any())
+    {
+        <p class="text-muted">No data available for Output 2.</p>
+    }
+    else
+    {
+        <ul class="list-group">
+            @foreach (var address in Model.UniqueAddresses)
+            {
+                <li class="list-group-item">@address</li>
+            }
+        </ul>
+    }
+</div>
